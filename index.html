@@ -31,6 +31,7 @@ body {
     overflow: hidden;
 }
 
+
 body {
     width: 100vw;
     height: 100dvh;
@@ -71,12 +72,6 @@ body {
 
 .animation-container > div {
 
-    /*
-       Do NOT force 100% width/height here.
-       Let Matplotlib determine its natural size,
-       then constrain it to the available viewport.
-    */
-
     max-width: 100%;
     max-height: 100%;
 
@@ -108,7 +103,7 @@ body {
 
 
 /* ============================================================
-   CONTROLS - DESKTOP
+   DESKTOP CONTROLS
    ============================================================ */
 
 .animation-container .anim-controls {
@@ -165,50 +160,71 @@ body {
     .animation-container {
 
         width: 100vw;
-
         height: 100dvh;
 
-        padding: 4px;
+        display: flex;
+
+        flex-direction: column;
 
         justify-content: center;
+        align-items: center;
+
+        overflow: hidden;
 
         box-sizing: border-box;
     }
 
 
-    /*
-       Give the animation most of the screen,
-       while reserving space for controls.
-    */
+    /* --------------------------------------------------------
+       Animation
+
+       80% height + 80% scale
+       = approximately 20% zoom-out
+       -------------------------------------------------------- */
 
     .animation-container > div {
 
-        width: 100%;
+        width: 100% !important;
 
-        max-width: 100%;
+        height: 80% !important;
 
-        max-height: calc(100dvh - 95px);
+        display: flex;
 
-        flex: 0 1 auto;
+        justify-content: center;
+        align-items: center;
 
-        overflow: hidden;
-    }
+        overflow: visible;
 
+        transform: scale(0.8);
 
-    .animation-container canvas {
+        transform-origin: center center;
 
-        max-width: 96vw !important;
-
-        max-height: calc(100dvh - 95px) !important;
-
-        width: auto !important;
-
-        height: auto !important;
+        box-sizing: border-box;
     }
 
 
     /* --------------------------------------------------------
-       Controls
+       Canvas
+       -------------------------------------------------------- */
+
+    .animation-container canvas {
+
+        display: block;
+
+        max-width: 100% !important;
+
+        max-height: 100% !important;
+
+        width: auto !important;
+
+        height: auto !important;
+
+        object-fit: contain;
+    }
+
+
+    /* --------------------------------------------------------
+       Mobile controls
        -------------------------------------------------------- */
 
     .animation-container .anim-controls {
@@ -217,9 +233,19 @@ body {
 
         max-width: 100vw;
 
-        padding: 3px;
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        align-items: center;
 
         gap: 2px;
+
+        padding: 2px;
+
+        box-sizing: border-box;
 
         font-size: 11px !important;
 
@@ -237,8 +263,6 @@ body {
 
         min-height: 26px !important;
 
-        max-width: 42px;
-
         box-sizing: border-box;
     }
 
@@ -247,7 +271,7 @@ body {
 
         width: 100px;
 
-        max-width: 30vw;
+        max-width: 25vw;
 
         height: 5px !important;
     }
@@ -271,84 +295,44 @@ body {
 
 
 /* ============================================================
-   SMALL PHONES
+   LANDSCAPE MOBILE
    ============================================================ */
 
-@media (max-width: 400px) {
+@media (max-width: 900px) and (orientation: landscape) {
 
     .animation-container > div {
 
-        max-height: calc(100dvh - 85px);
+        width: 100% !important;
+
+        height: 85% !important;
+
+        transform: scale(0.8);
+
+        transform-origin: center center;
     }
 
 
     .animation-container canvas {
 
-        max-width: 94vw !important;
+        max-width: 100% !important;
 
-        max-height: calc(100dvh - 85px) !important;
+        max-height: 100% !important;
+
+        width: auto !important;
+
+        height: auto !important;
     }
 
 
     .animation-container .anim-controls {
 
-        gap: 1px;
+        width: 100%;
 
-        padding: 2px;
-
-        font-size: 9px !important;
-    }
-
-
-    .animation-container .anim-controls button {
-
-        font-size: 9px !important;
-
-        padding: 2px 3px !important;
-
-        min-width: 24px !important;
-
-        min-height: 23px !important;
-    }
-
-
-    .animation-container .anim-controls input[type="range"] {
-
-        width: 80px;
-
-        max-width: 25vw;
-    }
-}
-
-
-/* ============================================================
-   LANDSCAPE PHONE
-   ============================================================ */
-
-@media (max-width: 900px)
-       and (orientation: landscape) {
-
-    .animation-container > div {
-
-        max-height: calc(100dvh - 55px);
-    }
-
-
-    .animation-container canvas {
-
-        max-width: 96vw !important;
-
-        max-height: calc(100dvh - 55px) !important;
-    }
-
-
-    .animation-container .anim-controls {
-
-        padding: 2px;
+        font-size: 10px !important;
 
         gap: 2px;
 
-        font-size: 10px !important;
+        padding: 2px;
     }
 
 
@@ -362,7 +346,17 @@ body {
 
         padding: 2px 4px !important;
     }
+
+
+    .animation-container .anim-controls input[type="range"] {
+
+        width: 90px;
+
+        max-width: 20vw;
+    }
 }
+
+
 
 </style>
 
@@ -558,42 +552,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img5923d7e19ab041ae9bb32b5215befb50">
+  <img id="_anim_imge696ccd915a248b7955d9215f2e0d1b8">
   <div class="anim-controls">
-    <input id="_anim_slider5923d7e19ab041ae9bb32b5215befb50" type="range" class="anim-slider"
+    <input id="_anim_slidere696ccd915a248b7955d9215f2e0d1b8" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim5923d7e19ab041ae9bb32b5215befb50.set_frame(parseInt(this.value));">
+           oninput="anime696ccd915a248b7955d9215f2e0d1b8.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim5923d7e19ab041ae9bb32b5215befb50.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anime696ccd915a248b7955d9215f2e0d1b8.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim5923d7e19ab041ae9bb32b5215befb50.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anime696ccd915a248b7955d9215f2e0d1b8.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim5923d7e19ab041ae9bb32b5215befb50.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anime696ccd915a248b7955d9215f2e0d1b8.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim5923d7e19ab041ae9bb32b5215befb50.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anime696ccd915a248b7955d9215f2e0d1b8.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim5923d7e19ab041ae9bb32b5215befb50.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anime696ccd915a248b7955d9215f2e0d1b8.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim5923d7e19ab041ae9bb32b5215befb50.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anime696ccd915a248b7955d9215f2e0d1b8.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim5923d7e19ab041ae9bb32b5215befb50.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anime696ccd915a248b7955d9215f2e0d1b8.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim5923d7e19ab041ae9bb32b5215befb50.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anime696ccd915a248b7955d9215f2e0d1b8.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim5923d7e19ab041ae9bb32b5215befb50.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anime696ccd915a248b7955d9215f2e0d1b8.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select5923d7e19ab041ae9bb32b5215befb50"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selecte696ccd915a248b7955d9215f2e0d1b8"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_5923d7e19ab041ae9bb32b5215befb50"
+      <input type="radio" name="state" value="once" id="_anim_radio1_e696ccd915a248b7955d9215f2e0d1b8"
              >
-      <label for="_anim_radio1_5923d7e19ab041ae9bb32b5215befb50">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_5923d7e19ab041ae9bb32b5215befb50"
+      <label for="_anim_radio1_e696ccd915a248b7955d9215f2e0d1b8">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_e696ccd915a248b7955d9215f2e0d1b8"
              checked>
-      <label for="_anim_radio2_5923d7e19ab041ae9bb32b5215befb50">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_5923d7e19ab041ae9bb32b5215befb50"
+      <label for="_anim_radio2_e696ccd915a248b7955d9215f2e0d1b8">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_e696ccd915a248b7955d9215f2e0d1b8"
              >
-      <label for="_anim_radio3_5923d7e19ab041ae9bb32b5215befb50">Reflect</label>
+      <label for="_anim_radio3_e696ccd915a248b7955d9215f2e0d1b8">Reflect</label>
     </form>
   </div>
 </div>
@@ -603,9 +597,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img5923d7e19ab041ae9bb32b5215befb50";
-    var slider_id = "_anim_slider5923d7e19ab041ae9bb32b5215befb50";
-    var loop_select_id = "_anim_loop_select5923d7e19ab041ae9bb32b5215befb50";
+    var img_id = "_anim_imge696ccd915a248b7955d9215f2e0d1b8";
+    var slider_id = "_anim_slidere696ccd915a248b7955d9215f2e0d1b8";
+    var loop_select_id = "_anim_loop_selecte696ccd915a248b7955d9215f2e0d1b8";
     var frames = new Array(120);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -267875,7 +267869,7 @@ TkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim5923d7e19ab041ae9bb32b5215befb50 = new Animation(frames, img_id, slider_id, 50.0,
+        anime696ccd915a248b7955d9215f2e0d1b8 = new Animation(frames, img_id, slider_id, 50.0,
                                  loop_select_id);
     }, 0);
   })()
